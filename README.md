@@ -33,7 +33,7 @@ Execute as queries de criação e inserção de dados presentes na pasta queries
 
 Documentação
 
-A documentação técnica detalha a arquitetura de dados e fornece instruções sobre como fazer a configuração inicial. [Documentação Técnica Arquitetura de Dados](Documentação Técnica Arquitetura de dados.docx).
+A documentação técnica detalha a arquitetura de dados e fornece instruções sobre como fazer a configuração inicial. (Documentação Técnica Arquitetura de dados.docx).
 
 Capturas de Tela
 
