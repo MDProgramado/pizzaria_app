@@ -13,8 +13,8 @@ Este projeto tem como objetivo a criação de um banco de dados para gerenciar i
 
 ## Tecnologias Utilizadas
 
-- Sistema de Banco de Dados: [Nome do Banco de Dados]
-- [Outras ferramentas ou linguagens, se aplicável]
+- Sistema de Banco de Dados: Pizzaria_app
+
 
 ## Como Rodar o Projeto
 
