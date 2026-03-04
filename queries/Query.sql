@@ -49,14 +49,12 @@ CREATE TABLE IF NOT EXISTS products (
     deleted_at TIMESTAMPTZ
 );
 
-
 CREATE TABLE IF NOT EXISTS products_recipes (
     product_id UUID REFERENCES products(id) ON DELETE CASCADE,
     ingredient_id UUID REFERENCES ingredients(id) ON DELETE CASCADE,
     quantity_required DECIMAL(15,3) NOT NULL,
     PRIMARY KEY (product_id, ingredient_id)
 );
-
 
 CREATE TABLE IF NOT EXISTS orders (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -70,7 +68,6 @@ CREATE TABLE IF NOT EXISTS orders (
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
-
 CREATE TABLE IF NOT EXISTS order_items (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     tenant_id uuid NOT NULL REFERENCES tenants(id),
@@ -80,7 +77,6 @@ CREATE TABLE IF NOT EXISTS order_items (
     unit_price_at_sale DECIMAL(12,2) NOT NULL,
     subtotal DECIMAL(12,2) GENERATED ALWAYS AS (quantity * unit_price_at_sale) STORED
 );
-
 
 CREATE INDEX idx_orders_customer_id ON orders(customer_id);
 CREATE INDEX idx_orders_status ON orders(order_status) WHERE order_status != 'delivered';
@@ -105,17 +101,13 @@ CREATE POLICY tenant_isolation_policy ON customers
 CREATE POLICY tenant_isolation_policy ON products
     USING (tenant_id = current_setting('app.current_tenant')::uuid);
 
-
 CREATE POLICY tenant_isolation_policy ON ingredients
     USING (tenant_id = current_setting('app.current_tenant')::uuid);
 
-
 CREATE POLICY tenant_isolation_policy ON orders
     USING (tenant_id = current_setting('app.current_tenant')::uuid);
-
 CREATE POLICY tenant_isolation_policy ON order_items
     USING (tenant_id = current_setting('app.current_tenant')::uuid);
-
 
 CREATE OR REPLACE FUNCTION trigger_set_timestamp()
 RETURNS TRIGGER AS $$
